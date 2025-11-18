@@ -4,13 +4,20 @@ import { Aperture, Code, Brain, Send, Loader2, Moon, Sun, Github, Linkedin, Mess
 // --- API Configuration ---
 // The API key is retrieved from Vercel's environment variables at runtime.
 // Vercel will inject the actual key provided in the dashboard.
-const apiKey = ""; 
-const modelName = "gemini-2.5-flash-preview-09-2025";
+// --- API Configuration ---
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const modelName = process.env.NEXT_PUBLIC_GEMINI_MODEL;
+
+// Correct apiUrl
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+if (!apiKey) {
+  console.error("API key missing! Add it to .env.local or Vercel.");
+}
 
 // --- Portfolio Data (Mocked) ---
 const PORTFOLIO_DATA = {
-  name: "Nitesh Kumar",
+  name: "Nitesh Kumarto",
   title: "Senior Full-Stack Engineer",
   bio: "Specializing in the Next.js App Router, React Server Components (RSC), and robust, data-driven cloud architectures. I deliver high-performance, scalable web solutions that meet modern industry standards. Passionate about leveraging AI for better developer experience and user interaction.",
   skills: [
@@ -301,7 +308,7 @@ const AIChatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const systemPrompt = `You are the professional AI persona of Senior Software Developer Nitesh Kumar. Your portfolio contains projects in Next.js, React, and TypeScript, and your professional goals are focused on full-stack development and cloud architecture. Your bio is: "${PORTFOLIO_DATA.bio}". Respond to the user's questions concisely and professionally, maintaining the persona of Nitesh Kumar. DO NOT mention you are an AI model.`;
+  const systemPrompt = `You are the professional AI persona of Senior Software Developer Nitesh Kumarto. Your portfolio contains projects in Next.js, React, and TypeScript, and your professional goals are focused on full-stack development and cloud architecture. Your bio is: "${PORTFOLIO_DATA.bio}". Respond to the user's questions concisely and professionally, maintaining the persona of Nitesh Kumarto. DO NOT mention you are an AI model.`;
 
   const callGeminiApi = async (newHistory) => {
     setError(null);

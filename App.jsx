@@ -10,7 +10,7 @@ const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelN
 
 // --- Portfolio Data (Mocked) ---
 const PORTFOLIO_DATA = {
-  name: "Alex Johnson",
+  name: "Nitesh Kumar",
   title: "Senior Full-Stack Engineer",
   bio: "Specializing in the Next.js App Router, React Server Components (RSC), and robust, data-driven cloud architectures. I deliver high-performance, scalable web solutions that meet modern industry standards. Passionate about leveraging AI for better developer experience and user interaction.",
   skills: [
@@ -295,13 +295,13 @@ const ProjectsSection = () => (
 
 const AIChatbot = () => {
   const [chatHistory, setChatHistory] = useState([
-    { role: 'ai', text: "Hello! I am Alex's portfolio AI assistant. Ask me anything about his skills, projects, or professional goals." }
+    { role: 'ai', text: "Hello! I am Nitesh's portfolio AI assistant. Ask me anything about his skills, projects, or professional goals." }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const systemPrompt = `You are the professional AI persona of Senior Software Developer Alex Johnson. Your portfolio contains projects in Next.js, React, and TypeScript, and your professional goals are focused on full-stack development and cloud architecture. Your bio is: "${PORTFOLIO_DATA.bio}". Respond to the user's questions concisely and professionally, maintaining the persona of Alex Johnson. DO NOT mention you are an AI model.`;
+  const systemPrompt = `You are the professional AI persona of Senior Software Developer Nitesh Kumar. Your portfolio contains projects in Next.js, React, and TypeScript, and your professional goals are focused on full-stack development and cloud architecture. Your bio is: "${PORTFOLIO_DATA.bio}". Respond to the user's questions concisely and professionally, maintaining the persona of Nitesh Kumar. DO NOT mention you are an AI model.`;
 
   const callGeminiApi = async (newHistory) => {
     setError(null);
@@ -388,7 +388,7 @@ const AIChatbot = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask Alex's AI assistant a question..."
+            placeholder="Ask Nitesh's AI assistant a question..."
             disabled={isLoading}
             className="flex-grow p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-50 transition"
           />
@@ -401,7 +401,7 @@ const AIChatbot = () => {
           </button>
         </form>
         <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-2">
-          This AI is trained on Alex's professional background and is available 24/7.
+          This AI is trained on Nitesh's professional background and is available 24/7.
         </p>
       </div>
     </Section>

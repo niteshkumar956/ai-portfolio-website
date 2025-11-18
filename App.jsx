@@ -5,15 +5,9 @@ import { Aperture, Code, Brain, Send, Loader2, Moon, Sun, Github, Linkedin, Mess
 // The API key is retrieved from Vercel's environment variables at runtime.
 // Vercel will inject the actual key provided in the dashboard.
 // --- API Configuration ---
-const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-const modelName = process.env.NEXT_PUBLIC_GEMINI_MODEL;
-
-// Correct apiUrl
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-
-if (!apiKey) {
-  console.error("API key missing! Add it to .env.local or Vercel.");
-}
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const MODEL_NAME = "gemini-2.0-flash";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 
 // --- Portfolio Data (Mocked) ---
 const PORTFOLIO_DATA = {
@@ -222,7 +216,8 @@ const ProjectCard = ({ project }) => {
     };
 
     try {
-      const response = await fetchWithExponentialBackoff(apiUrl, options);
+       const response = await fetchWithExponentialBackoff(API_URL, options);
+
       const result = await response.json();
       const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text;
 
@@ -333,7 +328,8 @@ const AIChatbot = () => {
     };
 
     try {
-      const response = await fetchWithExponentialBackoff(apiUrl, options);
+      const response = await fetchWithExponentialBackoff(API_URL, options);
+
       const result = await response.json();
 
       const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text;

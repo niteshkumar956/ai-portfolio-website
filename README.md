@@ -1,7 +1,7 @@
-🚀 AI-Powered Portfolio Website
+#🚀 AI-Powered Portfolio Website
 A modern AI-Integrated Portfolio Website built using React + Vite + Tailwind CSS + Gemini AI API.
 This website showcases skills, projects, and includes a smart AI chatbot that answers questions like a professional assistant.
-🧠 Features
+##🧠 Features
 ✔ Fully Responsive UI
 ✔ Dark & Light Mode
 ✔ AI Chatbot powered by Google Gemini API
